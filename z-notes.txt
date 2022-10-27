@@ -1,0 +1,150 @@
+Slides: https://ps-rtt-sei.herokuapp.com/mod-2/week-11/day-1/slides/ 
+
+1. npx create-react-app mern-infrastructure
+
+2. npm run build (run this any time changes are made to development app to update production app)
+
+3. npm i express morgan serve-favicon
+
+4. Create your own server with necessary middleware:
+
+            const express = require("express")
+            const path = require("path")
+            const favicon = require("serve-favicon")
+            const morgan = require("morgan")
+            const app = express()
+
+            const PORT = process.env.PORT || 3001
+
+            app.use(morgan("dev"))
+            app.use(express.json())  
+
+            app.use(favicon(path.join(__dirname, "build", "favicon.ico")))
+            app.use(express.static(path.join(__dirname, "build")))
+
+            app.get("/orders", ()=>{
+
+            })
+
+            app.get("/orders/new", ()=>{
+
+            })
+
+            app.get("/*", (req, res)=>{
+                res.send(path.join(__dirname, "build", "index.html"))
+            })
+
+            app.listen(PORT, () =>{
+                console.log(`Server running on port: ${PORT} `)
+            })
+
+5.  Test the Express Server (production app)
+        - run nodemon server.js in a separate terminal to see the production app
+        - we see our production app (Express server) on port 3001
+        - terminal output: 
+                    [nodemon] starting `node server.js`
+                    Server running on port: 3001
+                    GET / 200 9.712 ms - 644
+                    GET /static/css/main.073c9b0a.css 200 3.220 ms - 1044
+                    GET /static/js/main.ad13e5eb.js 200 3.249 ms - 144069
+                    GET /static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg 200 4.038 ms - 2632
+                    GET /manifest.json 200 2.260 ms - 492
+                    GET /favicon.ico 200 4.545 ms - 3870
+                    GET /logo192.png 200 6.826 ms - 5347
+    NOTE: production app is running on port:3001 (backend)(server.js), and development app is running on port:3000 (frontend).
+
+    NOTE: run in dev app ( npm run build ) to update production app
+
+
+6. put "proxy": "http://localhost:3001" in package.json, so any requests are forwarded to the endpoint of 3001 (backend server.js)
+
+7. create state in App.js
+                import {useState, useEffect} from "react"
+
+                const [user, setUser] = useState(null)
+   
+8. create pages folder in src folder
+
+9. create each page (AuthPage, NewOrderPage, OrderHistoryPage)
+
+10. import each page in App.js
+   
+11. Conditionally render pages
+                return (
+                <div className="App">
+                {user ? <NewOrderPage/> : <AuthPage/>}
+                
+                </div>
+                );
+
+12. Stop front end (dev app) server and install npm i react-router-dom
+
+13. restart front end (dev app) server
+
+14. import Browser Router and wrap <App/> with <Router></Router> in index.js
+                import { BrowserRouter as Router } from 'react-router-dom';
+
+                <Router>
+                    <App />
+                </Router>
+
+15. import Route and Routes in App.js
+        import {Route, Routes} from "react-router-dom"
+
+
+16. wrap <Routes></Routes> around <NewOrderPage/> in App.js
+                return (
+                <div className="App">
+                {user ? <Routes><NewOrderPage/></Routes> : <AuthPage/>}
+                
+                </div>
+                );
+
+17. add a <Route>component and set both its path and element prop to conditionally render <NewOrderPage>:
+                return (
+                <div className="App">
+                {user ? 
+                <Routes>
+                    <Route path="/order/new" element={<NewOrderPage/>}/>
+                </Routes> 
+                : 
+                <AuthPage/>}
+                
+                </div>
+                );
+
+18. create NavBar component in src>components
+
+    NOTE: use NavLink to allow full CSS capabilities (more dynamic styling)
+                import {Link, NavLink} from "react-router-dom"
+
+                const NavBar = () =>{
+                    return(
+                        <nav>
+                            <NavLink to="/orders">Order History</NavLink>
+                            &nbsp; | &nbsp;
+                            <NavLink to="/orders/new">New Order</NavLink>
+                        </nav>
+                    )
+                }
+
+                export default NavBar
+
+19. add navbar to App.js
+                import NavBar from "./components/NavBar";
+
+                 return (
+                <main className="App">
+                {user ? (
+                <>
+                <NavBar/>
+                <Routes>
+                    <Route path="/orders/new" element={<NewOrderPage/>}/>
+                    <Route path="/orders" element={<OrderHistoryPage/>}/>
+                </Routes> 
+                </> )
+                : 
+                <AuthPage/>}
+                
+                </main>
+                );
