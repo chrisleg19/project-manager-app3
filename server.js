@@ -2,6 +2,10 @@ const express = require("express")
 const path = require("path")
 const favicon = require("serve-favicon")
 const morgan = require("morgan")
+require("dotenv").config()
+//connecting to the database (MongoDB)
+require('./config/database');
+
 
 const app = express()
 
@@ -24,13 +28,18 @@ app.use(express.static(path.join(__dirname, "build")))
 
 // API routes here, before the "catch all" route
     //NOTE: These routes are handling the requests from the front end to the database (the Application Programming Interface (API))
-app.get("/orders", ()=>{
+        // app.get("/orders", ()=>{
 
-})
+        // })
 
-app.get("/orders/new", ()=>{
+        // app.get("/orders/new", ()=>{
 
-})
+        // })
+
+
+
+// Put API routes here, before the "catch all" route
+app.use('/api/users', require('./routes/api/users'));
 
 
 

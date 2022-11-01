@@ -151,3 +151,33 @@ Slides: https://ps-rtt-sei.herokuapp.com/mod-2/week-11/day-1/slides/
 
 
                 testing git push
+
+
+19. npm i dotenv
+            - in server.js: 
+                require("dotenv").config()
+
+
+20. npm i mongoose
+
+
+21. create .env
+    - Add: DATABASE_URL=mongodb+srv://ChrisLeg19:chris123@cluster0.lkbzzlk.mongodb.net/mern_infrastructure?retryWrites=true&w=majority
+    
+    add to server.js: require('./config/database');
+
+
+22. ***WORKFLOW FOR PRODUCTION APP***  Begin Implementing Token-Based Auth:
+
+    1. The process of adding a feature to a MERN-Stack app
+
+    2. Code the <SignUpForm>component as a class component
+
+    3. Add service & API modules for the client
+
+
+23. pickup on slides: https://ps-rtt-sei.herokuapp.com/mod-2/week-11/day-3/slides/ 
+
+
+24. next set of slides: https://ps-rtt-sei.herokuapp.com/mod-2/week-11/day-4/slides/ 
+
