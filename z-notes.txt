@@ -181,3 +181,5 @@ Slides: https://ps-rtt-sei.herokuapp.com/mod-2/week-11/day-1/slides/
 
 24. next set of slides: https://ps-rtt-sei.herokuapp.com/mod-2/week-11/day-4/slides/ 
 
+        NOTE: SKIPPED "Test Drive the User Model" in slides: https://ps-rtt-sei.herokuapp.com/mod-2/week-11/day-4/slides/ 
+
