@@ -6,6 +6,7 @@ import { signUp } from "../utilities/users-service";
 //? NOTE: flow of the data   =>   src/components/SignUpForm/SignUpForm.jsx <--> users-service.js <--> users-api.js <-Internet-> server.js (Express)
 
 export default class SignUpForm extends Component {
+ 
     state = {
         name: '',
         email: '',
@@ -48,9 +49,13 @@ export default class SignUpForm extends Component {
                 password: this.state.password
             }
 
+            const {setUser} = this.props
+
             //pass formData to signUp function
             const user = await signUp(formData)
-            console.log(user)
+            // console.log(user)
+
+            setUser(user)
             
         } catch {
             //if we have an error, we will set this to the state (error:"")

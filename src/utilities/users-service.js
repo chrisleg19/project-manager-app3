@@ -50,3 +50,37 @@ export async function signUp(userData) {
     // If there's a token, return the user in the payload, otherwise return null
     return token ? JSON.parse(atob(token.split('.')[1])).user : null;
   }
+
+
+  //logout function used in Nav-Bar that removes token
+  export function logOut() {
+    localStorage.removeItem('SEI_token');
+    }
+
+
+
+
+
+
+    export async function login(userData) {
+
+      const token = await usersAPI.login(userData);
+ 
+      localStorage.setItem("SEI_token", token)
+      return getUser()
+    }
+
+
+
+
+    export async function checkToken(){
+      // console.log("expDate")
+      // alert("clicked")
+
+
+      // Just so that you don't forget how to use .then
+      return usersAPI.checkToken()
+      // checkToken returns a string, but let's
+      // make it a Date object for more flexibility
+      .then(dateStr => new Date(dateStr));
+    }

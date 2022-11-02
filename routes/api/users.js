@@ -14,5 +14,9 @@ const usersCtrl = require('../../controllers/api/users');
 // whenever a request is made to: /api/users , the create() below will run
 router.post("/", usersCtrl.create)
 
+router.post("/login",usersCtrl.login)
+
+
+
 
 module.exports = router;
