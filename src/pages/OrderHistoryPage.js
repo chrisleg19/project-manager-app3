@@ -4,7 +4,8 @@ const OrderHistoryPage = () =>{
 
 const handleCheckToken = async () =>{
         
-    const expDate = await  checkToken()
+    const expDate = await checkToken()
+    console.log(expDate)
 }
 
     return (
