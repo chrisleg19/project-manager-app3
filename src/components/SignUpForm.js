@@ -63,7 +63,6 @@ export default class SignUpForm extends Component {
         }
       }
 
-
       //NOTE: We will create smaller components for front end to make code more organized and reusable.
       //NOTE: We will organize our code into modules: 
                 //- Utility Modules: Modules that hold general purpose functions, for example, a formatTime(seconds)function. These modules are reusable in multiple projects.
@@ -74,7 +73,6 @@ export default class SignUpForm extends Component {
 
         //NOTE: see "flow chart for frontend & backend modules.jpg"
         //NOTE: functions inside of users-api.js and user-services.js could be put in the handleSubmit function, but that is not best practices, which is why we created separate utility files. 
-
 
       render() {
         //variable to enable/disable sign up button

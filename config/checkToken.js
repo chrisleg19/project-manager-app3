@@ -1,3 +1,13 @@
+//Middleware function (called in server.js) that: 
+
+  //1. Checks if there's a token sent in an Authorization header of the HTTP request. For additional flexibility, we'll also check for a token being sent as a query string parameter.
+
+  //2. Verifies the token is valid and hasn't expired.
+  
+  //3. Decodes the token to obtain the user data from its payload.
+
+  //4. Then finally, adds the user payload to the Express request object.
+
 
 const jwt = require('jsonwebtoken');
 

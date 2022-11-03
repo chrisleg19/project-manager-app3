@@ -39,7 +39,7 @@ const SALT_ROUNDS = 6
       });
       
 
-
+      
 //function to check if the password has been modified, if yes, then the password will be encrypted again with bcrypt
 
 //Mongoose pre-save hook (Mongoose middleware) that will hash the password anytime the password has changed
@@ -54,7 +54,6 @@ const SALT_ROUNDS = 6
     this.password = await bcrypt.hash(this.password, SALT_ROUNDS);
     return next();
   });
-
 
 
 

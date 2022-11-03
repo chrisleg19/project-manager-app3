@@ -31,6 +31,7 @@ async function create(req, res){
 
 /*-- Helper Functions, we can use both when a user signs up and when they log in: --*/
     //NOTE: There are several ways to specify the expiration of the JWT.  See docs for more info: https://www.npmjs.com/package/jsonwebtoken 
+
     //function returns JWT token
 function createJWT(user) {
     return jwt.sign(
@@ -41,22 +42,27 @@ function createJWT(user) {
     );
   }
 
-
+  
+//log in controller function
   async function login(req, res){
     try {
+        //finds user object by email
         const user = await User.findOne({email: req.body.email})
-        // const decodedPassword = await bcrypt.compare(req.body.password, user.password)
-
+        //if no user found, throw error
         if (!user) throw new Error();
-    const match = await bcrypt.compare(req.body.password, user.password);
-    if (!match) throw new Error();
-    res.json( createJWT(user) );
+        //if user is found, compare bcrypt password in db to login form
+        const match = await bcrypt.compare(req.body.password, user.password);
+        //if passwords do not match, throw error
+        if (!match) throw new Error();
+        //if passwords match, run createJWT() function above to create json web token 
+        res.json( createJWT(user) );
   } catch {
-    res.status(400).json('Bad Credentials');
+        res.status(400).json('Bad Credentials');
   }
 }
 
 
+//function to retrieve expiration date of token
 function checkToken(req, res) {
   // req.user will always be there for you when a token is sent
   console.log('req.user', req.user);
@@ -64,6 +70,7 @@ function checkToken(req, res) {
 }
 
 
+//object to export functions above
 module.exports = {
     create,
     login,
