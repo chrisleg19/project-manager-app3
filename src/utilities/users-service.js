@@ -25,7 +25,7 @@ export async function signUp(userData) {
     if(!token)return null
     //if we have a token, parse the data and assign to "payload" (getting the token's payload)
     const payload = JSON.parse(atob(token.split(".")[1]))
-    console.log(payload)
+    // console.log(payload)
 
     //checking expiration of token (is the token expired?)
         //NOTE: A JWT's exp is expressed in seconds, not milliseconds, so convert it by /1000

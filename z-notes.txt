@@ -190,4 +190,3 @@ Slides: https://ps-rtt-sei.herokuapp.com/mod-2/week-11/day-1/slides/
 
 Flow of MERN-infrastructure:
 
-1. Start with setting the state of the user at the top level component (App.js)

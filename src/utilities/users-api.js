@@ -50,6 +50,7 @@ const BASE_URL = '/api/users';
 
 
 export function signUp(userData) {
+  //sendRequest() has 3 parameter: 1.url, 2.method, 3.payload 
   return sendRequest(BASE_URL, 'POST', userData);
 }
 
@@ -61,8 +62,7 @@ export function login(credentials) {
 /*--- Helper Functions ---*/
 
 async function sendRequest(url, method = 'GET', payload = null) {
-  // Fetch accepts an options object as the 2nd argument
-  // used to include a data payload, set headers, etc.
+  // Fetch accepts an options object as the 2nd argument used to include a data payload, set headers, etc.
   const options = { method };
   if (payload) {
     options.headers = { 'Content-Type': 'application/json'};
@@ -73,8 +73,7 @@ async function sendRequest(url, method = 'GET', payload = null) {
   if (token) {
     // Ensure the headers object exists
     options.headers = options.headers || {};
-    // Add token to an Authorization header
-    // Prefacing with 'Bearer' is recommended in the HTTP specification
+    // Add token to an Authorization header Prefacing with 'Bearer' is recommended in the HTTP specification
     options.headers.Authorization = `Bearer ${token}`;
   }
 

@@ -51,10 +51,11 @@ export default class SignUpForm extends Component {
 
             const {setUser} = this.props
 
-            //pass formData to signUp function
+            //pass formData to signUp function in "utilities/users-service"
             const user = await signUp(formData)
             // console.log(user)
 
+            //set-state function to set the state to "user" from above
             setUser(user)
             
         } catch {

@@ -7,6 +7,7 @@ import AuthPage from "./pages/AuthPage";
 import NewOrderPage from "./pages/NewOrderPage";
 import OrderHistoryPage from "./pages/OrderHistoryPage";
 import NavBar from "./components/NavBar";
+import HomePage from "./pages/HomePage"
 import './App.css';
 
 function App() {
@@ -20,12 +21,16 @@ const [user, setUser] = useState(getUser())
       <>
       <NavBar user={user} setUser = {setUser}/>
       <Routes>
+        <Route path="/" element={<HomePage/>}/>
         <Route path="/orders/new" element={<NewOrderPage/>}/>
         <Route path="/orders" element={<OrderHistoryPage/>}/>
       </Routes> 
       </> )
       : 
       <AuthPage setUser={setUser}/>}
+
+    {/* {user ? <HomePage/> : <AuthPage setUser={setUser}/>} */}
+
       
     </main>
   );

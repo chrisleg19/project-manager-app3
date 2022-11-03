@@ -2,10 +2,11 @@ import {Link, NavLink} from "react-router-dom"
 import * as usersService from "../utilities/users-service"
 
 
-//destructuring ({user}) from props below
+//destructuring ({user & setUser}) from props below
 const NavBar = ({user, setUser}) =>{
 
     const handleLogOut = () =>{
+        //logout function from "utilities/users-service"
         usersService.logOut()
 
         setUser(null)
@@ -14,6 +15,8 @@ const NavBar = ({user, setUser}) =>{
 
     return(
         <nav>
+            <NavLink to="/">Home</NavLink>
+            &nbsp; | &nbsp;
             <NavLink to="/orders">Order History</NavLink>
             &nbsp; | &nbsp;
             <NavLink to="/orders/new">New Order</NavLink>
