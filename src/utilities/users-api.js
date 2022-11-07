@@ -65,6 +65,7 @@ async function sendRequest(url, method = 'GET', payload = null) {
   // Fetch accepts an options object as the 2nd argument used to include a data payload, set headers, etc.
   const options = { method };
   if (payload) {
+    //The headers read-only property of the Request interface contains the Headers object associated with the request (https://developer.mozilla.org/en-US/docs/Web/API/Request/headers)
     options.headers = { 'Content-Type': 'application/json'};
     options.body = JSON.stringify(payload);
   }
