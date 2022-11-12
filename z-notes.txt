@@ -205,4 +205,4 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 3. Find the component you want to style on the site and then copy the import code into your component file (Ex. app.js).  Then apply the style tag to your component
 
-testing out github push
+another testing
