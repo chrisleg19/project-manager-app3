@@ -10,6 +10,8 @@ import NavBar from "./components/NavBar";
 import HomePage from "./pages/HomePage"
 import './App.css';
 
+
+
 function App() {
 //change the null to a blank object {} for a truthy value...(testing at the beginning of build)
 //after creating token and getUser(), import and use it as initial state

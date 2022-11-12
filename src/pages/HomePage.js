@@ -1,4 +1,4 @@
-
+import Button from 'react-bootstrap/Button';
 
 const HomePage = () =>{ 
 
@@ -6,7 +6,7 @@ const HomePage = () =>{
         <div>
    
             <h1>HomePage</h1>
-  
+        <Button variant="success">Bootstrap Button</Button>
 
         </div>
     )

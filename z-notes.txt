@@ -191,3 +191,16 @@ Slides: https://ps-rtt-sei.herokuapp.com/mod-2/week-11/day-1/slides/
 
 Flow of MERN-infrastructure:
 
+
+
+Bootstrap:
+https://react-bootstrap.github.io/getting-started/introduction
+
+1. npm install react-bootstrap bootstrap
+
+2. {/* The following line can be included in your src/index.js or App.js file */}
+                NOTE: index.js
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+3. Find the component you want to style on the site and then copy the import code into your component file (Ex. app.js).  Then apply the style tag to your component
