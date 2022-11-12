@@ -2,7 +2,8 @@ Slides: https://ps-rtt-sei.herokuapp.com/mod-2/week-11/day-1/slides/
 
 1. npx create-react-app mern-infrastructure
 
-2. npm run build (run this any time changes are made to development app to update production app)
+2. npm run build - create your build (production) folder
+        (run this any time changes are made to development app to update production app)
 
 3. npm i express morgan serve-favicon
 
