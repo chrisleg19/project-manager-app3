@@ -17,9 +17,9 @@ const NavBar = ({user, setUser}) =>{
         <nav>
             <NavLink to="/">Home</NavLink>
             &nbsp; | &nbsp;
-            <NavLink to="/orders">Order History</NavLink>
+            <NavLink to="/projects">Projects</NavLink>
             &nbsp; | &nbsp;
-            <NavLink to="/orders/new">New Order</NavLink>
+            <NavLink to="/projects/new">New Project</NavLink>
             &nbsp; | &nbsp;
             <NavLink to="" onClick={handleLogOut}>Log Out</NavLink>
             <p>Welcome, {user.name}</p>
