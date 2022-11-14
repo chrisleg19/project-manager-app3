@@ -9,4 +9,8 @@ router.get("/", projectsCtrl.listProjects)
 router.put("/:id", projectsCtrl.updateProject)
 
 
+
+router.delete("/:id", projectsCtrl.deleteProject)
+
+
 module.exports = router;

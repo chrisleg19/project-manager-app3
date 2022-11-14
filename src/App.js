@@ -14,6 +14,20 @@ function App() {
   //after creating token and getUser(), import and use it as initial state
   const [user, setUser] = useState(getUser());
   const [projects, setProjects] = useState([]);
+  const[deliverable, setDeliverable] = useState({
+    deliverableName: "",
+    deliverableBody: "",
+    estimatedCost: "",
+    actualCost: "",
+    estimatedTime: "",
+    actualTime: "",
+})
+const[constraint, setConstraint] = useState({
+  constraintName: "",
+  constraintBody: "",
+  showStopper: false
+})
+
 
   useEffect(() => {
     showProjects();
@@ -32,8 +46,8 @@ function App() {
           <NavBar user={user} setUser={setUser} />
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/projects/new" element={<NewProjectPage />} />
-            <Route path="/projects" element={<ProjectsPage projects={projects} />}/>
+            <Route path="/projects/new" element={<NewProjectPage deliverable = {deliverable} setDeliverable ={setDeliverable} constraint = {constraint} setConstraint = {setConstraint}/>} />
+            <Route path="/projects" element={<ProjectsPage projects={projects} deliverable = {deliverable} setDeliverable ={setDeliverable} constraint = {constraint} setConstraint = {setConstraint}/>}/>
           </Routes>
         </>) : (<AuthPage setUser={setUser} />
       )}

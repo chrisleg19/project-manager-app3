@@ -9,7 +9,14 @@ export function listProjects(){
 }
 
 export function updateProject(projectToEdit){
-    return sendRequest(BASE_URL + "/:id", "PUT", projectToEdit)
+    return sendRequest(BASE_URL + `/${projectToEdit._id}`, "PUT", projectToEdit)
+}
+
+
+
+
+export function deleteProject(projectToEdit){
+    return sendRequest(BASE_URL + `/${projectToEdit._id}`, "DELETE", projectToEdit)
 }
 
 async function sendRequest(url, method = 'GET', payload = null) {

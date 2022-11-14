@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 const ProjectDetails = (props) =>{
     const{project, setProject} = props
-    console.log(project)
+    console.log(project, "PROJECT FROM PROJECT DETAILS PAGE")
     const [projectToEdit, setProjectToEdit] = useState(null)
     const date = new Date(project[0].targetDate)
 

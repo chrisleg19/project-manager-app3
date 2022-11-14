@@ -12,6 +12,21 @@ export async function listProjects(){
 }
 
 export async function updateProject(projectToEdit){
+    //sending projectToEdit as an object
     const project = await projectsAPI.updateProject(projectToEdit)
-    return project
+    //receiving edited project from backend and setting it to an array
+    return [project]
+}
+
+
+
+
+
+
+
+
+
+
+export async function deleteProject(projectToEdit){
+    const project = await projectsAPI.deleteProject(projectToEdit)
 }

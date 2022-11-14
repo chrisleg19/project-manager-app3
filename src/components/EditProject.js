@@ -2,7 +2,8 @@ import {useState} from "react"
 import * as projectsService from "../utilities/projects-service"
 
 const EditProject = (props) =>{
-    const{project, setProject, projectToEdit, setProjectToEdit} = props
+    const{project, setProject, projectToEdit, setProjectToEdit, deliverable, setDeliverable, constraint, setConstraint} = props
+    // console.log("Beginning of EditProjectPage",projectToEdit[0].deliverables)
     const [deliverableToEdit, setDeliverableToEdit] = useState({
         deliverableName: "",
         deliverableBody: "",
@@ -20,14 +21,17 @@ const [constraintToEdit, setConstraintToEdit] = useState({
 
    console.log(deliverableToEdit)
    console.log(constraintToEdit)
-   console.log(projectToEdit)
+
 
     const handleSubmit = async (e) =>{
         e.preventDefault()
         try {
-            //put in update function for PUT request
-            const proj = await projectsService.updateProject(projectToEdit)
+            //sending project to PUT as an object
+            const proj = await projectsService.updateProject(projectToEdit[0])
+            //argument: proj is returned as an array after the PUT request (this was done in project-service.js)
             setProject(proj)
+            console.log(proj)
+            // console.log(projectToEdit, "PROJ TO EDIT")
 
         setProjectToEdit(null)
         } catch (error) {
@@ -35,9 +39,23 @@ const [constraintToEdit, setConstraintToEdit] = useState({
         }
     }
 
-    const updateDeliverable = (e)=>{
+    const deleteTheProject = async (e)=>{
+        e.preventDefault()
+        try {
+            const proj = await projectsService.deleteProject(projectToEdit[0])
+            setProject(proj)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const updateDeliverable = async (e)=>{
         e.preventDefault()
         setDeliverableToEdit(deliverableToEdit)
+        
+
+        console.log("UPDATE DELIVERABLE FNC",deliverableToEdit)
+        console.log("DELIVERABLE BEFORE UPDATE", projectToEdit[0].deliverables)
     }
 
     const updateConstraint = (e) =>{
@@ -46,7 +64,8 @@ const [constraintToEdit, setConstraintToEdit] = useState({
     }
 
     const handleHeaderChange = (e)=>{
-        setProjectToEdit({...projectToEdit, [e.target.name]: e.target.value})
+        const obj = {...projectToEdit[0], [e.target.name]: e.target.value}
+        setProjectToEdit([obj])
     }
 
     const handleDeliverableToEditChange = (e)=>{
@@ -58,7 +77,7 @@ const [constraintToEdit, setConstraintToEdit] = useState({
         setConstraintToEdit({...constraintToEdit, [e.target.name]: e.target.value})
     }
 
-
+    // console.log(projectToEdit, "CHECKING TARGET DATE")
     const date = new Date(projectToEdit[0].targetDate)
 
     const deliverablesToEdit = projectToEdit[0].deliverables.map((deliverable,idx)=>{
@@ -84,7 +103,7 @@ const [constraintToEdit, setConstraintToEdit] = useState({
             <h1>Edit Project Form</h1>
             
             {/* Tried to use method override here */}
-            <form onSubmit={handleSubmit} action={`/api/projects/${projectToEdit[0]._id}?_method=PUT`} method="POST">
+            <form onSubmit={handleSubmit} >
             <label>Title</label>
             <input type="text" name="title" defaultValue={projectToEdit[0].title} onChange={handleHeaderChange}/>
 
@@ -99,6 +118,8 @@ const [constraintToEdit, setConstraintToEdit] = useState({
 
             <br/>
             <button >Edit Project</button>
+            <br/>
+            
 
             </form>
 
@@ -106,22 +127,28 @@ const [constraintToEdit, setConstraintToEdit] = useState({
 
             <form onSubmit={updateDeliverable}>
                 <label>Deliverable Name</label>
-                <input type="text" name="deliverableName" defaultValue={deliverableToEdit.deliverableName} value={deliverableToEdit.deliverableName} onChange={handleDeliverableToEditChange}/>
+                <input type="text" name="deliverableName" defaultValue={deliverableToEdit.deliverableName}  onChange={handleDeliverableToEditChange}/>
+                {/* value={deliverableToEdit.deliverableName} */}
 
                 <label>Deliverable Body</label>
-                <input type ="text" name="deliverableBody" defaultValue={deliverableToEdit.deliverableBody} value={deliverableToEdit.deliverableBody} onChange={handleDeliverableToEditChange}/>
+                <input type ="text" name="deliverableBody" defaultValue={deliverableToEdit.deliverableBody}  onChange={handleDeliverableToEditChange}/>
+                {/* value={deliverableToEdit.deliverableBody} */}
 
                 <label>Estimated Cost</label>
-                <input type ="text" name="estimatedCost" defaultValue={deliverableToEdit.estimatedCost} value={deliverableToEdit.estimatedCost} onChange={handleDeliverableToEditChange}/>
+                <input type ="text" name="estimatedCost" defaultValue={deliverableToEdit.estimatedCost} />
+                {/* value={deliverableToEdit.estimatedCost} onChange={handleDeliverableToEditChange} */}
 
                 <label>Actual Cost</label>
-                <input type ="text" name="actualCost" defaultValue={deliverableToEdit.actualCost} value={deliverableToEdit.actualCost} onChange={handleDeliverableToEditChange}/>
+                <input type ="text" name="actualCost" defaultValue={deliverableToEdit.actualCost} />
+                {/* value={deliverableToEdit.actualCost} onChange={handleDeliverableToEditChange} */}
 
                 <label>Estimated Time</label>
-                <input type ="text" name="estimatedTime" defaultValue={deliverableToEdit.estimatedTime} value={deliverableToEdit.estimatedTime} onChange={handleDeliverableToEditChange}/>
+                <input type ="text" name="estimatedTime" defaultValue={deliverableToEdit.estimatedTime} />
+                {/* value={deliverableToEdit.estimatedTime} onChange={handleDeliverableToEditChange} */}
 
                 <label>Actual Time</label>
-                <input type ="text" name="actualTime" defaultValue={deliverableToEdit.actualTime} value={deliverableToEdit.actualTime} onChange={handleDeliverableToEditChange}/>
+                <input type ="text" name="actualTime" defaultValue={deliverableToEdit.actualTime} />
+                {/* value={deliverableToEdit.actualTime} onChange={handleDeliverableToEditChange} */}
                 <br/>
                 <button>Edit Deliverable</button>
 
@@ -131,14 +158,18 @@ const [constraintToEdit, setConstraintToEdit] = useState({
 
             <form onSubmit={updateConstraint}>
             <label>Constraint Name</label>
-            <input type="text" name="constraintName" defaultValue={constraintToEdit.constraintName} value={constraintToEdit.constraintName} onChange={handleConstraintToEditChange}/>
+            <input type="text" name="constraintName" defaultValue={constraintToEdit.constraintName}  onChange={handleConstraintToEditChange}/>
+            {/* value={constraintToEdit.constraintName} */}
             
             <label>Constraint Body</label>
-            <input type="text" name="constraintBody" defaultValue={constraintToEdit.constraintBody} value={constraintToEdit.constraintBody} onChange={handleConstraintToEditChange}/>
+            <input type="text" name="constraintBody" defaultValue={constraintToEdit.constraintBody}  onChange={handleConstraintToEditChange}/>
+            {/* value={constraintToEdit.constraintBody} */}
 
             <br/>
             <button >Edit Deliverable</button>
             </form>
+
+            <button onClick={deleteTheProject}>Delete Project</button>
 
         </div>
     )

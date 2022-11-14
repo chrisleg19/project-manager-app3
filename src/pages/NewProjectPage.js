@@ -4,7 +4,8 @@ import {create} from "../utilities/projects-service"
 import {useState} from "react"
 
 
-const NewProjectPage = () =>{
+const NewProjectPage = (props) =>{
+    const {deliverable, setDeliverable, constraint, setConstraint} = props
     const [formData, setFormData] = useState({
         title: "",
         client: "",
@@ -19,14 +20,14 @@ const NewProjectPage = () =>{
 const[deliverables, setDeliverables] = useState([])
 
 
-const[deliverable, setDeliverable] = useState({
-        deliverableName: "",
-        deliverableBody: "",
-        estimatedCost: "",
-        actualCost: "",
-        estimatedTime: "",
-        actualTime: "",
-})
+// const[deliverable, setDeliverable] = useState({
+//         deliverableName: "",
+//         deliverableBody: "",
+//         estimatedCost: "",
+//         actualCost: "",
+//         estimatedTime: "",
+//         actualTime: "",
+// })
 
 
 const addDeliverable = (event) =>{
@@ -45,11 +46,11 @@ const addDeliverable = (event) =>{
 const[constraints, setConstraints] =useState([])
 
 
-const[constraint, setConstraint] = useState({
-        constraintName: "",
-        constraintBody: "",
-        showStopper: false
-    })
+// const[constraint, setConstraint] = useState({
+//         constraintName: "",
+//         constraintBody: "",
+//         showStopper: false
+//     })
 
 
 const addConstraint = (event)=>{
