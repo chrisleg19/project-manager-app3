@@ -6,6 +6,7 @@ router.post("/", projectsCtrl.create)
 
 router.get("/", projectsCtrl.listProjects)
 
+router.put("/:id", projectsCtrl.updateProject)
 
 
 module.exports = router;

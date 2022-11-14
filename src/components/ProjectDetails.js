@@ -21,7 +21,7 @@ const ProjectDetails = (props) =>{
 
     const constraintsList = project[0].constraints.map((constraint,idx)=>{
         return(
-            <div key={constraint.id}>
+            <div key={constraint._id}>
                 <h4>{constraint.constraintName}</h4>
                 <p>{constraint.constraintBody}</p>
                 <p>{constraint.estimatedCost}</p>
@@ -31,7 +31,7 @@ const ProjectDetails = (props) =>{
     })
 
     return(
-        <div key={project.id}>
+        <div key={project._id}>
             {!projectToEdit ? (<div><h1>Project Details</h1>
             <p>{project[0].title}</p>
             <p>{project[0].client}</p>

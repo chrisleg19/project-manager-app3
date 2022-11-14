@@ -20,8 +20,13 @@ async function listProjects(req, res){
     console.log(projects)
 }
 
+//Not sure if i need a findById() first with GET method before attempting PUT.
+async function updateProject(req, res){
+    const projectUpdated = await Project.findByIdAndUpdate(req.params._id)
+    res.json(projectUpdated)
+    
+}
 
 
 
-
-module.exports = {create, listProjects}
+module.exports = {create, listProjects, updateProject}

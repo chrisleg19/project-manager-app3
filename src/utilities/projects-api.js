@@ -8,7 +8,9 @@ export function listProjects(){
     return sendRequest(BASE_URL, "GET" )
 }
 
-
+export function updateProject(projectToEdit){
+    return sendRequest(BASE_URL + "/:id", "PUT", projectToEdit)
+}
 
 async function sendRequest(url, method = 'GET', payload = null) {
     const options = { method };

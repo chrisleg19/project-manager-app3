@@ -1,4 +1,5 @@
 import {useState} from "react"
+import * as projectsService from "../utilities/projects-service"
 
 const EditProject = (props) =>{
     const{project, setProject, projectToEdit, setProjectToEdit} = props
@@ -25,7 +26,9 @@ const [constraintToEdit, setConstraintToEdit] = useState({
         e.preventDefault()
         try {
             //put in update function for PUT request
-            
+            const proj = await projectsService.updateProject(projectToEdit)
+            setProject(proj)
+
         setProjectToEdit(null)
         } catch (error) {
             console.log(error)
@@ -79,7 +82,9 @@ const [constraintToEdit, setConstraintToEdit] = useState({
             <button onClick={()=>{setProject(null)}}>Projects List</button>
             <button onClick={()=>{setProjectToEdit(null)}}>Back</button>
             <h1>Edit Project Form</h1>
-            <form onSubmit={handleSubmit}>
+            
+            {/* Tried to use method override here */}
+            <form onSubmit={handleSubmit} action={`/api/projects/${projectToEdit[0]._id}?_method=PUT`} method="POST">
             <label>Title</label>
             <input type="text" name="title" defaultValue={projectToEdit[0].title} onChange={handleHeaderChange}/>
 
@@ -92,7 +97,8 @@ const [constraintToEdit, setConstraintToEdit] = useState({
             <label>Target Date</label>
             <input type="text" name="targetDate" defaultValue={date.toDateString()} onChange={handleHeaderChange}/>
 
-            <button type="submit">Edit Project</button>
+            <br/>
+            <button >Edit Project</button>
 
             </form>
 

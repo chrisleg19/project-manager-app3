@@ -11,3 +11,7 @@ export async function listProjects(){
     return listOfProjects
 }
 
+export async function updateProject(projectToEdit){
+    const project = await projectsAPI.updateProject(projectToEdit)
+    return project
+}
