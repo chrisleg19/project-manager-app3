@@ -18,9 +18,10 @@ const [constraintToEdit, setConstraintToEdit] = useState({
     constraintBody: "",
     showStopper: false
 })
-
+    
    console.log(deliverableToEdit)
    console.log(constraintToEdit)
+
 
 
     const handleSubmit = async (e) =>{
@@ -52,8 +53,6 @@ const [constraintToEdit, setConstraintToEdit] = useState({
     const updateDeliverable = async (e)=>{
         e.preventDefault()
         setDeliverableToEdit(deliverableToEdit)
-        
-
         console.log("UPDATE DELIVERABLE FNC",deliverableToEdit)
         console.log("DELIVERABLE BEFORE UPDATE", projectToEdit[0].deliverables)
     }

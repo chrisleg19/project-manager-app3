@@ -7,7 +7,7 @@ const AuthPage = (props) =>{
     const [showSignUp, setShowSignup] = useState(true)
     return (
         <div>
-            <h1>AuthPage</h1>
+            <h1>Sign Up / Log In</h1>
             {showSignUp ? <SignUpForm setUser={setUser}/> :
             <LoginForm setUser={setUser}/>}
 

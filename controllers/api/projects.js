@@ -24,6 +24,8 @@ async function listProjects(req, res){
 async function updateProject(req, res){
     const projectUpdated = await Project.findByIdAndUpdate(req.params.id, req.body, { returnDocument: "after" }
     )
+    console.log("PROJECTS CONTROLLER",req.params.id)
+    console.log("PROJECTS CONTROLLER",req.body)
     res.json(projectUpdated)
     
 }

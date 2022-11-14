@@ -43,11 +43,11 @@ const[constraint, setConstraint] = useState({
     <main className="App">
       {user ? (
         <>
-          <NavBar user={user} setUser={setUser} />
+          <NavBar user={user} setUser={setUser} projects={projects}/>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/projects/new" element={<NewProjectPage deliverable = {deliverable} setDeliverable ={setDeliverable} constraint = {constraint} setConstraint = {setConstraint}/>} />
-            <Route path="/projects" element={<ProjectsPage projects={projects} deliverable = {deliverable} setDeliverable ={setDeliverable} constraint = {constraint} setConstraint = {setConstraint}/>}/>
+            <Route path="/projects/*" element={<ProjectsPage projects={projects} deliverable = {deliverable} setDeliverable ={setDeliverable} constraint = {constraint} setConstraint = {setConstraint}/>}/>
           </Routes>
         </>) : (<AuthPage setUser={setUser} />
       )}

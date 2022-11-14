@@ -3,7 +3,7 @@ import * as usersService from "../utilities/users-service"
 
 
 //destructuring ({user & setUser}) from props below
-const NavBar = ({user, setUser}) =>{
+const NavBar = ({user, setUser, projects}) =>{
 
     const handleLogOut = () =>{
         //logout function from "utilities/users-service"

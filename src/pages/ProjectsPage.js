@@ -12,7 +12,9 @@ const display = projects.map((project,idx)=>{
     return(
 
         <div key = {project._id}>
-            <h2>{project.title}</h2>
+            <h3>{project.title}</h3>
+            <h5>Client: {project.client}</h5>
+            <h5>Target Date: {date.toDateString()}</h5>
             <button onClick={(e)=>{setProject(projects.filter(p=>p._id===project._id))}}>Select Project</button>
 
         </div>
@@ -20,8 +22,10 @@ const display = projects.map((project,idx)=>{
 })
 
     return (
-        <div>
-            <h1>Projects Page</h1>         
+        <div >
+            
+            <h1>Projects</h1>  
+            <br/>       
             {project?null: display}
             {project?<ProjectDetails project ={project} setProject={setProject}/>:null}
 
@@ -32,4 +36,8 @@ const display = projects.map((project,idx)=>{
 export default ProjectsPage
 
 
-
+const styles ={
+    h3:{backgroundColor: "blue"}, 
+    projCard:{display: "flex", flexDirection:"column"},
+    body: {display:"flex", flexWrap:"wrap"}
+}

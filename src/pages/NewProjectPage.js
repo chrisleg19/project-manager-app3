@@ -101,7 +101,7 @@ const addConstraint = (event)=>{
 
     return (
         <div>
-            <h1>NewProjectPage</h1>
+            <h1>New Project</h1>
 
             {/* {Create New Project Form} */}
             <form autoComplete="off" onSubmit={handleSubmit}>
@@ -127,22 +127,22 @@ const addConstraint = (event)=>{
             {/* {Add New Deliverable Form} */}
             <form onSubmit={addDeliverable}>
 
-            <label>Deliverable 1 Name:</label>
+            <label>Deliverable Name:</label>
             <input type="text" name="deliverableName" value={deliverable.deliverableName} onChange={handleDeliverableChange}  />
 
-            <label>Deliverable 1 Body:</label>
+            <label>Deliverable Body:</label>
             <input type="text" name="deliverableBody" value={deliverable.deliverableBody} onChange={handleDeliverableChange}  />
 
-            <label>Deliverable 1 Estimated Cost:</label>
+            <label>Deliverable Estimated Cost:</label>
             <input type="text" name="estimatedCost" value={deliverable.estimatedCost} onChange={handleDeliverableChange}  />
 
-            <label>Deliverable 1 Actual Cost:</label>
+            <label>Deliverable Actual Cost:</label>
             <input type="text" name="actualCost" value={deliverable.actualCost} onChange={handleDeliverableChange}  />
 
-            <label>Deliverable 1 Estimated Time:</label>
+            <label>Deliverable Estimated Time:</label>
             <input type="text" name="estimatedTime" value={deliverable.estimatedTime} onChange={handleDeliverableChange}  />
 
-            <label>Deliverable 1 Actual Time:</label>
+            <label>Deliverable Actual Time:</label>
             <input type="text" name="actualTime" value={deliverable.actualTime} onChange={handleDeliverableChange}  /> <br/>
 
             <button>Add Deliverable</button>
@@ -154,13 +154,13 @@ const addConstraint = (event)=>{
             {/* {Add New Constraint Form} */}
             <form onSubmit={addConstraint}>
 
-            <label>Constraint 1 Name:</label>
+            <label>Constraint Name:</label>
             <input type="text" name="constraintName" value={constraint.constraintName} onChange={handleConstraintChange}  />
 
-            <label>Constraint 1 Body:</label>
+            <label>Constraint Body:</label>
             <input type="text" name="constraintBody" value={constraint.constraintBody} onChange={handleConstraintChange}  />
 
-            <label>Constraint 1 Show Stopper:</label>
+            <label>Constraint Show Stopper:</label>
             <input type="checkbox" id="showStopper" name="showStopper" value={constraint.showStopper} onChange={handleConstraintChange}/> <br/>
 
             <button>Add Constraint</button>
