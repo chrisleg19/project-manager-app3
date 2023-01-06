@@ -20,16 +20,6 @@ const NewProjectPage = (props) =>{
 const[deliverables, setDeliverables] = useState([])
 
 
-// const[deliverable, setDeliverable] = useState({
-//         deliverableName: "",
-//         deliverableBody: "",
-//         estimatedCost: "",
-//         actualCost: "",
-//         estimatedTime: "",
-//         actualTime: "",
-// })
-
-
 const addDeliverable = (event) =>{
     event.preventDefault();
     setDeliverables([...deliverables, deliverable])
@@ -44,13 +34,6 @@ const addDeliverable = (event) =>{
 }
 
 const[constraints, setConstraints] =useState([])
-
-
-// const[constraint, setConstraint] = useState({
-//         constraintName: "",
-//         constraintBody: "",
-//         showStopper: false
-//     })
 
 
 const addConstraint = (event)=>{

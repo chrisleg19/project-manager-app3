@@ -1,3 +1,6 @@
+"npm start" for front end terminal
+"nodemon server.js" for backend terminal
+
 Slides: https://ps-rtt-sei.herokuapp.com/mod-2/week-11/day-1/slides/ 
 
 1. npx create-react-app mern-infrastructure
