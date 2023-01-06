@@ -52,9 +52,26 @@ const [constraintToEdit, setConstraintToEdit] = useState({
 
     const updateDeliverable = async (e)=>{
         e.preventDefault()
-        setDeliverableToEdit(deliverableToEdit)
+
+        try{
+
+             
+            
+            setDeliverableToEdit(deliverableToEdit)
+
+            console.log("DELIVERABLE TO EDIT",  deliverableToEdit)
+
+            const deliv = await projectsService.updateDeliverable(deliverableToEdit)
+
+            console.log("CONSTANT DELIV",deliv)
+
+
         console.log("UPDATE DELIVERABLE FNC",deliverableToEdit)
         console.log("DELIVERABLE BEFORE UPDATE", projectToEdit[0].deliverables)
+
+    } catch(error){
+        console.log(error)
+    }
     }
 
     const updateConstraint = (e) =>{

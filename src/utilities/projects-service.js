@@ -18,6 +18,12 @@ export async function updateProject(projectToEdit){
     return [project]
 }
 
+export async function updateDeliverable(deliverableToEdit){
+    const deliverable = await projectsAPI.updateDeliverable(deliverableToEdit)
+    console.log("PROJECT-SERVICE DELIVERABLE", [deliverable])
+    return [deliverable]
+}
+
 
 
 

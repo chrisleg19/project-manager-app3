@@ -31,9 +31,17 @@ async function updateProject(req, res){
 }
 
 
+async function updateDeliverable(req, res){
+    console.log("PROJECT-CONTROLLERS - project", Project)
+    const deliverableUpdated = await Project.findByIdAndUpdate(req.params.id, req.body, {returnDocument: "after"})
+    res.json(deliverableUpdated)
+    console.log("PROJECTS-CONTROLLERS - deliverable", deliverableUpdated)
+}
+
+
 async function deleteProject(req, res){
     await Project.findByIdAndRemove(req.params.id)
 }
 
 
-module.exports = {create, listProjects, updateProject, deleteProject}
+module.exports = {create, listProjects, updateProject, deleteProject, updateDeliverable}

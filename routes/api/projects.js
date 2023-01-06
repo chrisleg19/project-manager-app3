@@ -6,8 +6,9 @@ router.post("/", projectsCtrl.create)
 
 router.get("/", projectsCtrl.listProjects)
 
-router.put("/:id", projectsCtrl.updateProject)
+router.put("/:id", projectsCtrl.updateDeliverable)
 
+router.put("/:id", projectsCtrl.updateProject)
 
 
 router.delete("/:id", projectsCtrl.deleteProject)
