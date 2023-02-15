@@ -214,3 +214,11 @@ another testing
 1/6/2023 - added updateDeliverable to EditProject.js and subsequent flow of app.  Trying to figure out why  PROJECT-SERVICE DELIVERABLE and CONSTANT DELIV are null in console. 
 
 Testing git checkout 2/15/23 6pm
+instruction on how to checkout:
+https://devopscube.com/checkout-clone-specific-git-commit-id-sha/
+
+git checkout <SHA code>
+
+git switch -     to go back to the original version.
+
+NOTE: must create a new branch to keep changes/commits from checkout.
