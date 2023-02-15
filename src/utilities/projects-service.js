@@ -19,6 +19,7 @@ export async function updateProject(projectToEdit){
 }
 
 export async function updateDeliverable(deliverableToEdit){
+    console.log("Projects-Service (deliverableToEdit)", deliverableToEdit)
     const deliverable = await projectsAPI.updateDeliverable(deliverableToEdit)
     console.log("PROJECT-SERVICE DELIVERABLE", [deliverable])
     return [deliverable]

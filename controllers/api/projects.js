@@ -27,13 +27,15 @@ async function updateProject(req, res){
     console.log("PROJECTS CONTROLLER",req.params.id)
     console.log("PROJECTS CONTROLLER",req.body)
     res.json(projectUpdated)
+    console.log("*****PROJECT UPDATED*******",projectUpdated)
     
 }
 
 
 async function updateDeliverable(req, res){
-    console.log("PROJECT-CONTROLLERS - project", Project)
     const deliverableUpdated = await Project.findByIdAndUpdate(req.params.id, req.body, {returnDocument: "after"})
+    console.log("PROJECT-CONTROLLERS - update req.params.id", req.params.id )
+    console.log("PROJECT-CONTROLLERS - update req.body", req.body)
     res.json(deliverableUpdated)
     console.log("PROJECTS-CONTROLLERS - deliverable", deliverableUpdated)
 }

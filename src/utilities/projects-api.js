@@ -15,7 +15,10 @@ export function updateProject(projectToEdit){
 export function updateDeliverable(deliverableToEdit){
     console.log("PROJECTS-API...working", deliverableToEdit)
 
+    console.log("DELIVERABLE TO EDIT ID",deliverableToEdit._id)
+
     return sendRequest(BASE_URL + `/${deliverableToEdit._id}`, "PUT", deliverableToEdit)
+
 }
 
 
