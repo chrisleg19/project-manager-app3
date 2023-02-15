@@ -212,3 +212,5 @@ another testing
 
 
 1/6/2023 - added updateDeliverable to EditProject.js and subsequent flow of app.  Trying to figure out why  PROJECT-SERVICE DELIVERABLE and CONSTANT DELIV are null in console. 
+
+Testing git checkout 2/15/23 6pm
